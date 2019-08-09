@@ -1,7 +1,7 @@
 import React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { postSignOut } from '../../actions/AuthActions.js'
+// import { postSignOut } from '../../actions/AuthActions.js'
 
 class AuthButton extends React.Component {
   render() {
@@ -10,7 +10,7 @@ class AuthButton extends React.Component {
         Welcome!{' '}
         <button
           onClick={() => {
-            postSignOut()
+            // postSignOut()
           }}
         >
           Sign out
@@ -27,7 +27,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  postSignOut: () => dispatch(postSignOut()),
+  // postSignOut: () => dispatch(postSignOut()),
 })
 
 export default compose(
