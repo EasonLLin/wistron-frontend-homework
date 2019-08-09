@@ -3,6 +3,7 @@ import {
   UPDATE_PASSWORD,
   POST_SIGN_IN,
   POST_SIGN_OUT,
+  TOGGLE_SIGN_IN_FORM,
 } from '../constants/AuthTypes.js'
 
 const initial = {
@@ -10,6 +11,7 @@ const initial = {
   isAuthenticated: false,
   userName: null,
   password: null,
+  showSignInForm: false,
 }
 
 export default (state = initial, action) => {
@@ -45,6 +47,11 @@ export default (state = initial, action) => {
       return {
         ...state,
         isAuthenticated: false,
+      }
+    case TOGGLE_SIGN_IN_FORM:
+      return {
+        ...state,
+        showSignInForm: !state.showSignInForm,
       }
     default:
       return state

@@ -28,7 +28,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div>
+        <div style={{ padding: '20px' }}>
           <AuthButton />
           <ul>
             <li>
