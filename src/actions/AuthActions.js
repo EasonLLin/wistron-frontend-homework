@@ -6,23 +6,29 @@ import {
   TOGGLE_SIGN_IN_FORM,
 } from '../constants/AuthTypes.js'
 
-export const updateUserName = name => async dispatch => {
-  dispatch({ type: UPDATE_USER_NAME, payload: name })
-}
+// export const updateUserName = name => dispatch => {
+//   dispatch({ type: UPDATE_USER_NAME, payload: name })
+// }
 
-export const updatePassword = pw => async dispatch => {
-  dispatch({ type: UPDATE_PASSWORD, payload: pw })
-}
+// export const updatePassword = pw => dispatch => {
+//   dispatch({ type: UPDATE_PASSWORD, payload: pw })
+// }
 
-export const postSignOut = () => async dispatch => {
+export const postSignOut = () => dispatch => {
   dispatch({ type: POST_SIGN_OUT })
 }
 
-export const postSignIn = () => async dispatch => {
-  dispatch({ type: POST_SIGN_IN.REQUEST })
-}
+// export const postSignIn = () => async dispatch => {
+//   console.log('2')
+//   dispatch({ type: POST_SIGN_IN.REQUEST })
+// }
 
-export const toggleSignInForm = () => async dispatch => {
-  console.log('toggleSignInForm')
-  dispatch({ type: TOGGLE_SIGN_IN_FORM })
+// export const toggleSignInForm = () => async dispatch => {
+//   console.log('toggleSignInForm')
+//   dispatch({ type: TOGGLE_SIGN_IN_FORM })
+// }
+
+export function postSignIn(authParams) {
+  console.log('postSignIn')
+  return { type: POST_SIGN_IN.REQUEST, payload: authParams }
 }
