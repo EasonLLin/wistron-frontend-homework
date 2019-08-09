@@ -41,7 +41,7 @@ const SignInDialog = props => {
   }
 
   function handlePostSignIn() {
-    props.postSignIn()
+    props.postSignIn({ userName: userName, password: password })
   }
 
   return (
