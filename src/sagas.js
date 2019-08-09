@@ -9,7 +9,7 @@ import {
 } from './constants/AuthTypes.js'
 
 export default function* rootSaga() {
-  yield all[watchRequestLogin()]
+  yield all([watchRequestLogin()])
 }
 
 export function* watchRequestLogin() {
