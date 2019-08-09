@@ -1,31 +1,47 @@
 import { delay } from 'redux-saga'
-import { put, takeEvery, all, call } from 'redux-saga/effects'
 import {
-  UPDATE_USER_NAME,
-  UPDATE_PASSWORD,
-  POST_SIGN_IN,
-  POST_SIGN_OUT,
-  TOGGLE_SIGN_IN_FORM,
-} from './constants/AuthTypes.js'
+  put,
+  takeEvery,
+  all,
+  call,
+  fork,
+  take,
+  cancel,
+} from 'redux-saga/effects'
+import { SIGN_IN, SIGN_OUT } from './constants/AuthTypes.js'
 
 export default function* rootSaga() {
   yield all([watchRequestLogin()])
 }
 
 export function* watchRequestLogin() {
-  console.log('saga woohoo')
-  yield takeEvery(POST_SIGN_IN.REQUEST, loginFlow)
+  yield takeEvery(SIGN_IN.REQUEST, loginFlow)
 }
 
-export function* loginFlow(action) {
-  console.log('loginFlow')
+export function* authorize({ username, password }) {
   try {
+    if (username !== 'guest' && password !== 'guest') {
+      return false
+    } else {
+    }
     // const response = yield call(loginAPI, {
-    //   username: action.username,
-    //   password: action.password,
+    //   username: action.payload.username,
+    //   password: action.payload.password,
     // })
-    yield put({ type: POST_SIGN_IN.SUCCESS })
+    yield put({ type: SIGN_IN.SUCCESS })
+    console.log('1')
   } catch (error) {
-    yield put({ type: POST_SIGN_IN.ERROR, error })
+    console.log('err')
+    yield put({ type: SIGN_IN.ERROR, error })
   }
+}
+
+export function* loginFlow({ payload }) {
+  console.log('payload', payload)
+  const task = yield fork(authorize, {
+    username: payload.username,
+    password: payload.password,
+  })
+  yield take(SIGN_IN.CANCEL)
+  yield cancel(task)
 }
