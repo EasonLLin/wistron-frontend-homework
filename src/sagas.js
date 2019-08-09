@@ -13,6 +13,7 @@ export default function* rootSaga() {
 }
 
 export function* watchRequestLogin() {
+  console.log('saga woohoo')
   yield takeEvery(POST_SIGN_IN.REQUEST, loginFlow)
 }
 

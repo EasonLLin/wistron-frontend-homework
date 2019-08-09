@@ -5,7 +5,6 @@ import {
   POST_SIGN_OUT,
   TOGGLE_SIGN_IN_FORM,
 } from '../constants/AuthTypes.js'
-import { takeEvery } from 'redux-saga/effects'
 
 export const updateUserName = name => async dispatch => {
   dispatch({ type: UPDATE_USER_NAME, payload: name })
@@ -17,6 +16,10 @@ export const updatePassword = pw => async dispatch => {
 
 export const postSignOut = () => async dispatch => {
   dispatch({ type: POST_SIGN_OUT })
+}
+
+export const postSignIn = () => async dispatch => {
+  dispatch({ type: POST_SIGN_IN.REQUEST })
 }
 
 export const toggleSignInForm = () => async dispatch => {

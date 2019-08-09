@@ -1,7 +1,6 @@
 import React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { toggleSignInForm } from '../../actions/AuthActions.js'
 import SignInDialog from './components/SignInDialog.js'
 
 class SignInShow extends React.Component {
@@ -14,16 +13,9 @@ class SignInShow extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  showSignInForm: state.auth.showSignInForm,
-})
+const mapStateToProps = state => ({})
 
-const mapDispatchToProps = dispatch => ({
-  toggleSignInForm: () => {
-    console.log('1')
-    return dispatch(toggleSignInForm())
-  },
-})
+const mapDispatchToProps = dispatch => ({})
 
 export default compose(
   connect(

@@ -1,12 +1,14 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { postSignIn } from '../../../actions/AuthActions.js'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import TextField from '@material-ui/core/TextField'
-import Grid from '@material-ui/core/Grid'
 
 const useStyles = makeStyles({
   button: {
@@ -49,14 +51,13 @@ const SignInDialog = props => {
             <TextField
               label="Username"
               value={userName}
-              name="Username"
               onChange={handleSetUserName}
             />
           </div>
           <div>
             <TextField
               label="Password"
-              name="password"
+              type="password"
               value={password}
               onChange={handleSetPassword}
             />
@@ -66,7 +67,7 @@ const SignInDialog = props => {
           <Button onClick={handleClose} color="secondary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={props.postSignIn} color="primary">
             Sign In
           </Button>
         </DialogActions>
@@ -74,4 +75,16 @@ const SignInDialog = props => {
     </div>
   )
 }
-export default SignInDialog
+
+const mapStateToProps = state => ({})
+
+const mapDispatchToProps = dispatch => ({
+  postSignIn: () => dispatch({ type: 'POST_SIGN_IN_REQUEST' }),
+})
+
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(SignInDialog)
