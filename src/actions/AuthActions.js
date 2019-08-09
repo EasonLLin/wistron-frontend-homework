@@ -1,10 +1,4 @@
-import {
-  UPDATE_USER_NAME,
-  UPDATE_PASSWORD,
-  POST_SIGN_IN,
-  POST_SIGN_OUT,
-  TOGGLE_SIGN_IN_FORM,
-} from '../constants/AuthTypes.js'
+import { SIGN_IN, SIGN_OUT } from '../constants/AuthTypes.js'
 
 // export const updateUserName = name => dispatch => {
 //   dispatch({ type: UPDATE_USER_NAME, payload: name })
@@ -15,7 +9,7 @@ import {
 // }
 
 export const postSignOut = () => dispatch => {
-  dispatch({ type: POST_SIGN_OUT })
+  dispatch({ type: SIGN_OUT })
 }
 
 // export const postSignIn = () => async dispatch => {
@@ -30,5 +24,5 @@ export const postSignOut = () => dispatch => {
 
 export function postSignIn(authParams) {
   console.log('postSignIn')
-  return { type: POST_SIGN_IN.REQUEST, payload: authParams }
+  return { type: SIGN_IN.REQUEST, payload: authParams }
 }

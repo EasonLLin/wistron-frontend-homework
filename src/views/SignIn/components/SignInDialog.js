@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 const SignInDialog = props => {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
-  const [userName, setUserName] = React.useState('')
+  const [username, setUsername] = React.useState('')
   const [password, setPassword] = React.useState('')
 
   function handleClickOpen() {
@@ -32,8 +32,8 @@ const SignInDialog = props => {
     setOpen(false)
   }
 
-  function handleSetUserName(event) {
-    setUserName(event.target.value)
+  function handleSetUsername(event) {
+    setUsername(event.target.value)
   }
 
   function handleSetPassword(event) {
@@ -41,7 +41,7 @@ const SignInDialog = props => {
   }
 
   function handlePostSignIn() {
-    props.postSignIn({ userName: userName, password: password })
+    props.postSignIn({ username: username, password: password })
   }
 
   return (
@@ -55,8 +55,8 @@ const SignInDialog = props => {
           <div>
             <TextField
               label="Username"
-              value={userName}
-              onChange={handleSetUserName}
+              value={username}
+              onChange={handleSetUsername}
             />
           </div>
           <div>
