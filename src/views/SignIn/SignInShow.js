@@ -7,7 +7,10 @@ class SignInShow extends React.Component {
   render() {
     return (
       <div>
-        <SignInDialog open={this.props.showSignInForm} />
+        <SignInDialog
+          open={this.props.showSignInForm}
+          history={this.props.history}
+        />
       </div>
     )
   }

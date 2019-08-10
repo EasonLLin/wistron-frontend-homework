@@ -9,6 +9,7 @@ import {
   cancel,
 } from 'redux-saga/effects'
 import { SIGN_IN, SIGN_OUT } from './constants/AuthTypes.js'
+import { loginAPI } from './services/api/loginAPI.js'
 
 export default function* rootSaga() {
   yield all([watchRequestLogin()])
@@ -18,21 +19,17 @@ export function* watchRequestLogin() {
   yield takeEvery(SIGN_IN.REQUEST, loginFlow)
 }
 
-export function* authorize({ username, password }) {
+export function* authorize({ username, password, history }) {
   try {
-    if (username !== 'guest' && password !== 'guest') {
-      return false
-    } else {
-    }
-    // const response = yield call(loginAPI, {
-    //   username: action.payload.username,
-    //   password: action.payload.password,
-    // })
+    const response = yield call(loginAPI, {
+      username: username,
+      password: password,
+    })
+
     yield put({ type: SIGN_IN.SUCCESS })
-    console.log('1')
+    yield put(history.push('/protected'))
   } catch (error) {
-    console.log('err')
-    yield put({ type: SIGN_IN.ERROR, error })
+    yield put({ type: SIGN_IN.FAILURE, error })
   }
 }
 
@@ -41,6 +38,7 @@ export function* loginFlow({ payload }) {
   const task = yield fork(authorize, {
     username: payload.username,
     password: payload.password,
+    history: payload.history,
   })
   yield take(SIGN_IN.CANCEL)
   yield cancel(task)

@@ -23,6 +23,5 @@ export const postSignOut = () => dispatch => {
 // }
 
 export function postSignIn(authParams) {
-  console.log('postSignIn')
   return { type: SIGN_IN.REQUEST, payload: authParams }
 }

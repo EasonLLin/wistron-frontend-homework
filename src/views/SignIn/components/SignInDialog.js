@@ -40,8 +40,12 @@ const SignInDialog = props => {
     setPassword(event.target.value)
   }
 
-  function handlePostSignIn() {
-    props.postSignIn({ username: username, password: password })
+  async function handlePostSignIn() {
+    props.postSignIn({
+      username: username,
+      password: password,
+      history: props.history,
+    })
   }
 
   return (

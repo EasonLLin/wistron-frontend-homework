@@ -12,22 +12,10 @@ import ProtectedShow from './views/Protected/ProtectedShow'
 import SignInShow from './views/SignIn/SignInShow'
 import AuthButton from './views/Auth/AuthButton'
 
-const auth = {
-  isAuthenticated: false,
-  authenticate(cb) {
-    this.isAuthenticated = true
-    setTimeout(cb, 100) // fake async
-  },
-  signout(cb) {
-    this.isAuthenticated = false
-    setTimeout(cb, 100)
-  },
-}
-
 class App extends React.Component {
   render() {
     return (
-      <Router basename="/wistron-frontend-homework">
+      <Router>
         <div style={{ padding: '20px' }}>
           <AuthButton />
           <ul>
@@ -45,8 +33,7 @@ class App extends React.Component {
           <Route
             path="/protected"
             render={() => {
-              console.log('auth', auth)
-              return auth.isAuthenticated ? (
+              return this.props.isAuthenticated ? (
                 <ProtectedShow />
               ) : (
                 <Redirect to="/signin" />
