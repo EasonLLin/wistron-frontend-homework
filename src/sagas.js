@@ -49,7 +49,6 @@ export function* loginFlow({ payload }) {
     history: payload.history,
   })
   yield take(SIGN_IN.CANCEL)
-  console.log('cancel')
   yield cancel(task)
 }
 
