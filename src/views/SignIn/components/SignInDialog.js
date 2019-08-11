@@ -1,9 +1,8 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { compose } from 'redux'
+import { bindActionCreators, compose } from 'redux'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { postSignIn } from '../../../actions/AuthActions.js'
+import { signIn } from '../../../actions/AuthActions.js'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
@@ -40,8 +39,8 @@ const SignInDialog = props => {
     setPassword(event.target.value)
   }
 
-  async function handlePostSignIn() {
-    props.postSignIn({
+  async function handleSignIn() {
+    props.signIn({
       username: username,
       password: password,
       history: props.history,
@@ -76,7 +75,7 @@ const SignInDialog = props => {
           <Button onClick={handleClose} color="secondary">
             Cancel
           </Button>
-          <Button onClick={handlePostSignIn} color="primary">
+          <Button onClick={handleSignIn} color="primary">
             Sign In
           </Button>
         </DialogActions>
@@ -90,8 +89,7 @@ const mapStateToProps = state => ({})
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      postSignIn,
-      // add other watcher sagas to this object to map them to props
+      signIn,
     },
     dispatch
   )

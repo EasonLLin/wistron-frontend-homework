@@ -8,8 +8,9 @@ import { SIGN_IN, SIGN_OUT } from '../constants/AuthTypes.js'
 //   dispatch({ type: UPDATE_PASSWORD, payload: pw })
 // }
 
-export const postSignOut = () => dispatch => {
-  dispatch({ type: SIGN_OUT })
+export function signOut() {
+  console.log('sign out action')
+  return { type: SIGN_OUT.REQUEST }
 }
 
 // export const postSignIn = () => async dispatch => {
@@ -22,6 +23,6 @@ export const postSignOut = () => dispatch => {
 //   dispatch({ type: TOGGLE_SIGN_IN_FORM })
 // }
 
-export function postSignIn(authParams) {
+export function signIn(authParams) {
   return { type: SIGN_IN.REQUEST, payload: authParams }
 }

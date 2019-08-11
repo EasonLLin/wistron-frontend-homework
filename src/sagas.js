@@ -12,11 +12,15 @@ import { SIGN_IN, SIGN_OUT } from './constants/AuthTypes.js'
 import { loginAPI } from './services/api/loginAPI.js'
 
 export default function* rootSaga() {
-  yield all([watchRequestLogin()])
+  yield all([call(watchRequestLogin), call(watchRequestSignOut)])
 }
 
 export function* watchRequestLogin() {
   yield takeEvery(SIGN_IN.REQUEST, loginFlow)
+}
+
+export function* watchRequestSignOut() {
+  yield takeEvery(SIGN_OUT.REQUEST, signOutFlow)
 }
 
 export function* authorize({ username, password, history }) {
@@ -25,7 +29,6 @@ export function* authorize({ username, password, history }) {
       username: username,
       password: password,
     })
-
     yield put({ type: SIGN_IN.SUCCESS })
     yield put(history.push('/protected'))
   } catch (error) {
@@ -42,4 +45,9 @@ export function* loginFlow({ payload }) {
   })
   yield take(SIGN_IN.CANCEL)
   yield cancel(task)
+}
+
+export function* signOutFlow() {
+  console.log('sign out flow')
+  yield put({ type: SIGN_OUT.SUCCESS })
 }
