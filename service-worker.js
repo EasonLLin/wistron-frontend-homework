@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/wistron-frontend-homework/precache-manifest.97b45c39edf9f60c18dae2fd0ce35d25.js"
+  "/wistron-frontend-homework/precache-manifest.caf98ddca7141a95ac7de08a44cb1566.js"
 );
 
 self.addEventListener('message', (event) => {
