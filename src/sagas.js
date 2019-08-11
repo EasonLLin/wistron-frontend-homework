@@ -37,7 +37,6 @@ export function* authorize({ username, password, history }) {
 }
 
 export function* loginFlow({ payload }) {
-  console.log('payload', payload)
   const task = yield fork(authorize, {
     username: payload.username,
     password: payload.password,
@@ -48,6 +47,5 @@ export function* loginFlow({ payload }) {
 }
 
 export function* signOutFlow() {
-  console.log('sign out flow')
   yield put({ type: SIGN_OUT.SUCCESS })
 }

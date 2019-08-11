@@ -9,7 +9,6 @@ import { SIGN_IN, SIGN_OUT } from '../constants/AuthTypes.js'
 // }
 
 export function signOut() {
-  console.log('sign out action')
   return { type: SIGN_OUT.REQUEST }
 }
 
