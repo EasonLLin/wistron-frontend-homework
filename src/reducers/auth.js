@@ -6,6 +6,7 @@ const initial = {
   username: null,
   password: null,
   showSignInForm: false,
+  errText: null,
 }
 
 export default (state = initial, action) => {
@@ -24,6 +25,7 @@ export default (state = initial, action) => {
     case SIGN_IN.FAILURE:
       return {
         ...state,
+        errText: action.text,
         status: 'failure',
       }
     case SIGN_IN.CANCEL:

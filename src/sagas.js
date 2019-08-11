@@ -32,7 +32,7 @@ export function* authorize({ username, password, history }) {
     yield put({ type: SIGN_IN.SUCCESS })
     yield put(history.push('/protected'))
   } catch (error) {
-    yield put({ type: SIGN_IN.FAILURE, error })
+    yield put({ type: SIGN_IN.FAILURE, text: error.response.data.text })
   }
 }
 

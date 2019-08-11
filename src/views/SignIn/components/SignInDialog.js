@@ -4,13 +4,13 @@ import { connect } from 'react-redux'
 import { Form, Field } from 'react-final-form'
 import { bindActionCreators, compose } from 'redux'
 import styled from 'styled-components'
-import { signIn } from '../../../actions/AuthActions.js'
+import { signIn, cancelSignIn } from '../../../actions/AuthActions.js'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
-import TextField from '@material-ui/core/TextField'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const FormGroup = styled.div`
   margin-bottom: 18px;
@@ -38,6 +38,10 @@ const useStyles = makeStyles({
     backgroundColor: 'grey',
     color: '#f2f2f2',
   },
+  progress: {
+    width: '24px',
+    height: '24px',
+  },
 })
 
 const SignInDialog = props => {
@@ -50,6 +54,9 @@ const SignInDialog = props => {
 
   function handleClose() {
     setOpen(false)
+    if (props.status === 'request') {
+      props.cancelSignIn()
+    }
   }
 
   async function handleSignIn(values) {
@@ -80,7 +87,11 @@ const SignInDialog = props => {
                     <div>
                       <FormGroup>
                         <label>Username</label>
-                        <Input {...input} type="text" placeholder="Username" />
+                        <Input
+                          {...input}
+                          type="text"
+                          placeholder="Enter Username"
+                        />
                         <Error>
                           {meta.error && meta.touched && (
                             <span>{meta.error}</span>
@@ -95,7 +106,11 @@ const SignInDialog = props => {
                     <div>
                       <FormGroup>
                         <label>Password</label>
-                        <Input {...input} type="text" placeholder="Password" />
+                        <Input
+                          {...input}
+                          type="text"
+                          placeholder="Enter Password"
+                        />
                         <Error>
                           {meta.error && meta.touched && (
                             <span>{meta.error}</span>
@@ -105,13 +120,18 @@ const SignInDialog = props => {
                     </div>
                   )}
                 </Field>
+                <Error>{props.status === 'failure' ? props.errText : ''}</Error>
               </DialogContent>
               <DialogActions>
                 <Button onClick={handleClose} color="secondary">
                   Cancel
                 </Button>
                 <Button type="submit" color="primary" disabled={submitting}>
-                  Sign In
+                  {props.status === 'request' ? (
+                    <CircularProgress className={classes.progress} />
+                  ) : (
+                    'Sign In'
+                  )}
                 </Button>
               </DialogActions>
             </form>
@@ -122,12 +142,16 @@ const SignInDialog = props => {
   )
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+  status: state.auth.status,
+  errText: state.auth.errText,
+})
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
       signIn,
+      cancelSignIn,
     },
     dispatch
   )
