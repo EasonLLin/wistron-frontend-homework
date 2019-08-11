@@ -20,7 +20,7 @@ mock.onPost('/api/login').reply(function(config) {
     return [
       401,
       {
-        text: 'Unauthorized',
+        text: 'Incorrect username or password',
       },
     ]
   }
