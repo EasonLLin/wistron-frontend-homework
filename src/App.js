@@ -48,8 +48,6 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  username: state.auth.username,
-  password: state.auth.password,
   isAuthenticated: state.auth.isAuthenticated,
 })
 
