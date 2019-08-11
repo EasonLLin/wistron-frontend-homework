@@ -7,3 +7,7 @@ export function signOut() {
 export function signIn(authParams) {
   return { type: SIGN_IN.REQUEST, payload: authParams }
 }
+
+export function cancelSignIn() {
+  return { type: SIGN_IN.CANCEL }
+}
