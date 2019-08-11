@@ -15,7 +15,7 @@ import AuthButton from './views/Auth/AuthButton'
 class App extends React.Component {
   render() {
     return (
-      <Router>
+      <Router basename="/wistron-frontend-homework">
         <div style={{ padding: '20px' }}>
           <AuthButton />
           <ul>
