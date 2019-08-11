@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/wistron-frontend-homework/static/css/main.3df34d8b.chunk.css",
-    "main.js": "/wistron-frontend-homework/static/js/main.1f473e1a.chunk.js",
-    "main.js.map": "/wistron-frontend-homework/static/js/main.1f473e1a.chunk.js.map",
+    "main.js": "/wistron-frontend-homework/static/js/main.a6e09f80.chunk.js",
+    "main.js.map": "/wistron-frontend-homework/static/js/main.a6e09f80.chunk.js.map",
     "runtime~main.js": "/wistron-frontend-homework/static/js/runtime~main.13427fde.js",
     "runtime~main.js.map": "/wistron-frontend-homework/static/js/runtime~main.13427fde.js.map",
     "static/js/2.d56eabf1.chunk.js": "/wistron-frontend-homework/static/js/2.d56eabf1.chunk.js",
     "static/js/2.d56eabf1.chunk.js.map": "/wistron-frontend-homework/static/js/2.d56eabf1.chunk.js.map",
     "index.html": "/wistron-frontend-homework/index.html",
-    "precache-manifest.7e8693ba9b18c4addfee2d88e3164012.js": "/wistron-frontend-homework/precache-manifest.7e8693ba9b18c4addfee2d88e3164012.js",
+    "precache-manifest.97b45c39edf9f60c18dae2fd0ce35d25.js": "/wistron-frontend-homework/precache-manifest.97b45c39edf9f60c18dae2fd0ce35d25.js",
     "service-worker.js": "/wistron-frontend-homework/service-worker.js",
     "static/css/main.3df34d8b.chunk.css.map": "/wistron-frontend-homework/static/css/main.3df34d8b.chunk.css.map"
   }

@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9c5ba0c5689c52e0897e6df960619e2a",
+    "revision": "82ba21531c521657314a6faa6ecc8ffe",
     "url": "/wistron-frontend-homework/index.html"
   },
   {
-    "revision": "b7f90185243e2dab6022",
+    "revision": "4a89da0dc05c2a2eeb08",
     "url": "/wistron-frontend-homework/static/css/main.3df34d8b.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/wistron-frontend-homework/static/js/2.d56eabf1.chunk.js"
   },
   {
-    "revision": "b7f90185243e2dab6022",
-    "url": "/wistron-frontend-homework/static/js/main.1f473e1a.chunk.js"
+    "revision": "4a89da0dc05c2a2eeb08",
+    "url": "/wistron-frontend-homework/static/js/main.a6e09f80.chunk.js"
   },
   {
     "revision": "fa2d050409ffb31493bb",
