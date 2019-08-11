@@ -11,6 +11,8 @@ import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import IconButton from '@material-ui/core/IconButton'
+import CloseIcon from '@material-ui/icons/Close'
 
 const FormGroup = styled.div`
   margin-bottom: 18px;
@@ -41,6 +43,11 @@ const useStyles = makeStyles({
   progress: {
     width: '24px',
     height: '24px',
+  },
+  closeButton: {
+    position: 'absolute',
+    right: '7px',
+    top: '7px',
   },
 })
 
@@ -76,7 +83,12 @@ const SignInDialog = props => {
       </Button>
 
       <Dialog open={open} aria-labelledby="dialog-title" onClose={handleClose}>
-        <DialogTitle id="dialog-title">Sign In</DialogTitle>
+        <DialogTitle id="dialog-title">
+          Sign In
+          <IconButton className={classes.closeButton} onClick={handleClose}>
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
         <Form
           onSubmit={handleSignIn}
           render={({ handleSubmit, submitting, values }) => (
