@@ -30,9 +30,15 @@ export function* authorize({ username, password, history }) {
       password: password,
     })
     yield put({ type: SIGN_IN.SUCCESS })
-    yield put(history.push('/protected'))
+    yield history.push('/protected')
   } catch (error) {
-    yield put({ type: SIGN_IN.FAILURE, text: error.response.data.text })
+    if (error.response && error.response.data) {
+      yield put({ type: SIGN_IN.FAILURE, text: error.response.data.text })
+    } else {
+      yield put({
+        type: SIGN_IN.FAILURE,
+      })
+    }
   }
 }
 
@@ -43,6 +49,7 @@ export function* loginFlow({ payload }) {
     history: payload.history,
   })
   yield take(SIGN_IN.CANCEL)
+  console.log('cancel')
   yield cancel(task)
 }
 
